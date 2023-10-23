@@ -1,6 +1,6 @@
 {
   "name": "compare-by",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A versatile utility library for sorting arrays of objects by one or multiple keys with customizable sort directions.",
   "keywords": [
     "compare",
