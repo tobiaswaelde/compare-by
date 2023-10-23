@@ -1,9 +1,27 @@
 {
   "name": "compare-by",
   "version": "2.0.0",
+  "description": "A versatile utility library for sorting arrays of objects by one or multiple keys with customizable sort directions.",
+  "keywords": [
+    "compare",
+    "sorting",
+    "objects",
+    "arrays",
+    "keys",
+    "direction",
+    "utility",
+    "library",
+    "sorting utility",
+    "multisort",
+    "nested keys"
+  ],
   "main": "./out/index.js",
   "repository": "git@github.com:tobiaswaelde/compare-by.git",
-  "author": "Tobias Wälde <tobias.waelde@gmail.com>",
+  "author": {
+    "name": "Tobias Wökde",
+    "email": "tobias.waelde@gmail.com",
+    "url": "https://tobiaswaelde.com"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "ts-node ./src/index.ts",
