@@ -1,0 +1,8 @@
+# dependecies
+node_modules/
+
+# tests
+coverage/
+
+# build files
+out/
