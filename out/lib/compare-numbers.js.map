@@ -1,0 +1,1 @@
+{"version":3,"file":"compare-numbers.js","sourceRoot":"","sources":["../../src/lib/compare-numbers.ts"],"names":[],"mappings":";;;AAEA;;;;;;GAMG;AACI,MAAM,cAAc,GAAG,CAAC,CAAS,EAAE,CAAS,EAAE,MAAwB,KAAK,EAAE,EAAE;IACrF,IAAI,GAAG,KAAK,KAAK,EAAE;QAClB,OAAO,CAAC,GAAG,CAAC,CAAC;KACb;SAAM;QACN,OAAO,CAAC,GAAG,CAAC,CAAC;KACb;AACF,CAAC,CAAC;AANW,QAAA,cAAc,kBAMzB"}
