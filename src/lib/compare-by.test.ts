@@ -53,7 +53,7 @@ describe('compare by', () => {
 			arr.sort(compareBy([{ key: 'x' }, { key: 'y' }]));
 			expect(arr).toEqual(sortedArr);
 		});
-		test('ascending,descending order', () => {
+		test('descending,ascending order', () => {
 			const arr = [
 				{ x: 'c', y: 'c' },
 				{ x: 'b', y: 'a' },
@@ -68,7 +68,7 @@ describe('compare by', () => {
 			arr.sort(compareBy([{ key: 'x', dir: 'desc' }, { key: 'y' }]));
 			expect(arr).toEqual(sortedArr);
 		});
-		test('descending,ascending order', () => {
+		test('ascending,descending order', () => {
 			const arr = [
 				{ x: 'c', y: 'c' },
 				{ x: 'b', y: 'a' },
