@@ -1,6 +1,6 @@
 {
   "name": "compare-by",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "./out/index.js",
   "repository": "git@github.com:tobiaswaelde/compare-by.git",
   "author": "Tobias Wälde <tobias.waelde@gmail.com>",
