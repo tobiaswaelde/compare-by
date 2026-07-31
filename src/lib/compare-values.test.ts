@@ -45,9 +45,9 @@ describe('compare values', () => {
 	});
 
 	test('should throw an error for unsupported data types', () => {
-		const unsupportedDataA: any = [1, 2, 3];
-		const unsupportedDataB: any = { key: 'value' };
-		expect(() => compareValues(unsupportedDataA, unsupportedDataB)).toThrowError(
+		const unsupportedDataA: unknown = [1, 2, 3];
+		const unsupportedDataB: unknown = { key: 'value' };
+		expect(() => compareValues(unsupportedDataA, unsupportedDataB)).toThrow(
 			'Unsupported data type for comparison'
 		);
 	});
