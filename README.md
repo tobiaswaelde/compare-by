@@ -1,7 +1,5 @@
-<!-- omit in toc -->
 # compare-by
 
-<!-- project badges -->
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![npm](https://img.shields.io/npm/v/compare-by?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/compare-by)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=000000&style=for-the-badge)](https://www.buymeacoffee.com/tobiaswaelde)
@@ -9,138 +7,87 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/build.yml?branch=main&style=for-the-badge&label=build&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/release.yml?branch=main&style=for-the-badge&label=release&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/release.yml)
 
-
-`compare-by` is a versatile utility library that simplifies sorting arrays of objects by one or multiple object keys. It allows you to specify the sort direction for each key, providing fine-grained control over the sorting process.
-
-<!-- omit in toc -->
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Examples](#examples)
-  - [Sort by a Single Object Key](#sort-by-a-single-object-key)
-  - [Sort by a Nested Object Key](#sort-by-a-nested-object-key)
-  - [Sort by Multiple Keys](#sort-by-multiple-keys)
-- [License](#license)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+Type-safe comparators for sorting arrays by one or more object properties, including nested values selected by a callback.
 
 ## Installation
-You can install `compare-by` via [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/):
 
-<!-- omit in toc -->
-### Using pnpm
 ```sh
 pnpm add compare-by
-```
-
-<!-- omit in toc -->
-### Using npm
-```sh
+# or
 npm install compare-by
 ```
 
 ## Usage
-Here's how you can use compare-by:
 
 ```ts
 import { compareBy } from 'compare-by';
-const arr = [{
-    name: {
-      first: 'John',
-      last: 'Doe'
-    },
-    birthday: new Date(1998, 10, 20),
-    profileConfirmed: true,
-    age: 24
-  },
-  /* ... */
+
+const people = [
+	{ name: { first: 'Ada', last: 'Lovelace' }, age: 36, active: true },
+	{ name: { first: 'Grace', last: 'Hopper' }, age: 85, active: false },
 ];
 
-// sort by single key
-arr.sort(compareBy({
-  key: 'age',
-  dir: 'desc', // 'asc' | 'desc', default: 'asc'
-}));
+// One property; `asc` is the default direction.
+people.sort(compareBy({ key: 'age' }));
 
-// sort by nested key
-arr.sort(compareBy({
-  key: (obj) => obj.name.first,
-}));
+// A callback can select a nested property.
+people.sort(compareBy({ key: (person) => person.name.last, dir: 'desc' }));
 
-// sort by multiple keys
-arr.sort(compareBy([
-  { key: 'profileCreated' },
-  { key: (obj) => obj.name.last, dir: 'desc' }
+// Compare properties in order until one differs.
+people.sort(compareBy([
+	{ key: 'active', dir: 'desc' },
+	{ key: (person) => person.name.last },
 ]));
 ```
 
+## API
 
+### `compareBy(props)`
 
-## Examples
+Returns an `Array.prototype.sort` comparator. `props` accepts one `CompareKey` or an array of them. Keys are evaluated in order, so later keys break ties from earlier keys.
 
-### Sort by a Single Object Key
-<!-- omit in toc -->
-#### Ascending Order
 ```ts
-const arr = [{ x: 'b' }, { x: 'a' }, { x: 'c' }];
-arr.sort(compareBy({ key: 'x' }));
-console.log(arr); // [{ x: 'a' }, { x: 'b' }, { x: 'c' }]
+type CompareDirection = 'asc' | 'desc';
+type CompareKey<T> = {
+	key: keyof T | ((value: T) => unknown);
+	dir?: CompareDirection;
+};
+
+function compareBy<T>(props: CompareKey<T> | CompareKey<T>[]): (a: T, b: T) => number;
 ```
 
-<!-- omit in toc -->
-#### Descending Order
-```ts
-const arr = [{ x: 'b' }, { x: 'a' }, { x: 'c' }];
-arr.sort(compareBy({ key: 'x', dir: 'desc' }));
-console.log(arr); // [{ x: 'c' }, { x: 'b' }, { x: 'a' }]
+The selected values must be strings, numbers, booleans, or `Date` instances. Other values cause `compareBy` to throw an `Unsupported data type for comparison` error when sorting.
+
+### Value comparators
+
+The package also exports `compareStrings`, `compareNumbers`, `compareBooleans`, `compareDates`, and `compareValues` for direct use. All accept `(a, b, dir?)` and return a negative number, zero, or a positive number.
+
+- Strings use `localeCompare`.
+- Dates compare their timestamps.
+- Booleans sort `true` before `false` in ascending order.
+- `compareValues` dispatches to the matching comparator and throws for unsupported or mixed value types.
+
+## Development
+
+This repository uses pnpm 11.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm lint
+pnpm test
+pnpm build
 ```
 
-### Sort by a Nested Object Key
-<!-- omit in toc -->
-#### Ascending Order
-```ts
-const arr = [{ x: { y: 'b' } }, { x: { y: 'a' } }];
-arr.sort(compareBy({ key: (el) => el.x.y }));
-console.log(arr); // [{ x: { y: 'a' } }, { x: { y: 'b' } }]
-```
+`out/` is generated during the build and before npm publication; do not commit it. Add a changeset with `pnpm changeset` for every user-facing change. The release workflow creates a version PR and publishes it after that PR is merged.
 
-<!-- omit in toc -->
-#### Descending Order
-```ts
-const arr = [{ x: { y: 'a' } }, { x: { y: 'b' } }];
-arr.sort(compareBy({ key: (el) => el.x.y, dir: 'desc' }));
-console.log(arr); // [{ x: { y: 'b' } }, { x: { y: 'a' } }]
-```
+## Contributing
 
-### Sort by Multiple Keys
-```ts
-const arr = [
-	{ x: 'c', y: 'c' },
-	{ x: 'b', y: 'a' },
-	{ x: 'b', y: 'b' },
-];
-arr.sort(compareBy([
-  { key: 'x' }, // sort by 'x' in ascending order
-  { key: 'y', dir: 'desc' } // sort by 'y' in descending order
-]));
-
-console.log(arr);
-/**
- * [
- *   { x: 'b', y: 'b' },
- *   { x: 'b', y: 'a' },
- *   { x: 'c', y: 'c' },
- * ]
- */
-```
+Please use the [bug report](https://github.com/tobiaswaelde/compare-by/issues/new?template=bug_report.md) or [feature request](https://github.com/tobiaswaelde/compare-by/issues/new?template=feature_request.md) template. Include a focused test with behavior changes.
 
 ## License
-This project is licensed under the [MIT License](https://opensource.org/license/mit/).
+
+[MIT](LICENSE)
 
 ## Author
+
 [Tobias Wälde](https://tobiaswaelde.com)
-
-## Acknowledgments
-If your project is inspired by or uses other open-source projects, acknowledge them here. It's a good practice and shows respect to the open-source community.
-
-Feel free to customize the author's name, website, license, contribution guidelines, and code of conduct links according to your project's specifics. This improved README provides more context and is well-structured to help users understand, install, and use your library effectively.

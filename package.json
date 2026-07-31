@@ -16,9 +16,14 @@
     "nested keys"
   ],
   "main": "./out/index.js",
+  "types": "./out/index.d.ts",
+  "files": [
+    "out",
+    "CHANGELOG.md"
+  ],
   "repository": "git@github.com:tobiaswaelde/compare-by.git",
   "author": {
-    "name": "Tobias Wökde",
+    "name": "Tobias Wälde",
     "email": "tobias.waelde@gmail.com",
     "url": "https://tobiaswaelde.com"
   },

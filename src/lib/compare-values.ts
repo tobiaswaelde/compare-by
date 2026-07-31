@@ -4,6 +4,16 @@ import { compareDates } from './compare-dates';
 import { compareNumbers } from './compare-numbers';
 import { compareStrings } from './compare-strings';
 
+/**
+ * Compares strings, numbers, booleans, or dates using the matching comparator.
+ * Throws when values have unsupported or different runtime types.
+ * @typeParam T The type of both values.
+ * @param a The first value.
+ * @param b The second value.
+ * @param dir The comparison direction. Defaults to `asc`.
+ * @returns A negative number, zero, or a positive number.
+ * @throws {Error} When the values cannot be compared.
+ */
 export const compareValues = <T = string | number | Date | boolean>(
 	a: T,
 	b: T,
@@ -18,7 +28,6 @@ export const compareValues = <T = string | number | Date | boolean>(
 	} else if (a instanceof Date && b instanceof Date) {
 		return compareDates(a, b, dir);
 	} else {
-		// Handle other data types or throw an error if not supported.
 		throw new Error(`Unsupported data type for comparison: ${typeof a}`);
 	}
 };

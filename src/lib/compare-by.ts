@@ -3,29 +3,23 @@ import { OptionalArray, arrayify } from '../util/array';
 import { compareValues } from './compare-values';
 
 /**
- * Returns a compare function based on the given properties.
+ * Creates an `Array.prototype.sort` comparator from one or more keys.
+ * Keys are evaluated in order until one produces a non-zero result.
  * @example
- * // Sort by object key
- * [{ x: 'b' }, { x: 'a' }, { x: 'c' }].sort(compareBy({ key: 'x' }))
- * // returns [ { x: 'a' }, { x: 'b' }, { x: 'c' } ]
+ * const values = [{ age: 36 }, { age: 85 }];
+ * values.sort(compareBy({ key: 'age' }));
+ * // [{ age: 36 }, { age: 85 }]
  * @example
- * // Sort by object key with descending order
- * [{ x: 'b' }, { x: 'a' }, { x: 'c' }].sort(compareBy({ key: 'x', dir: 'desc' }))
- * // returns [ { x: 'a' }, { x: 'b' }, { x: 'c' } ]
+ * const values = [{ name: { last: 'Lovelace' } }, { name: { last: 'Hopper' } }];
+ * values.sort(compareBy({ key: (value) => value.name.last, dir: 'desc' }));
+ * // [{ name: { last: 'Lovelace' } }, { name: { last: 'Hopper' } }]
  * @example
- * // Sort by nested object key
- * [{ x: { y: 'b' } }, { x: { y: 'a' } }].sort(compareBy({ key: (el) => el.x.y }))
- * // returns [ { x: { y: 'a' } }, { x: { y: 'b' } } ]
- * @example
- * // Sort by 'x' then by 'y'
- * [
- *   { x: 'c', y: 'c' },
- *   { x: 'b', y: 'a' },
- *   { x: 'b', y: 'b' },
- * ].sort(compareBy([{ key: 'x' }, { key: 'y' }]))
- * @type {T} The type of the array object.
- * @param {Array<CompareKey<T>>} props The properties to compare.
- * @returns {CompareFn<T>} The function to compare the values.
+ * const values = [{ group: 'a', score: 1 }, { group: 'a', score: 2 }];
+ * values.sort(compareBy([{ key: 'group' }, { key: 'score', dir: 'desc' }]));
+ * // [{ group: 'a', score: 2 }, { group: 'a', score: 1 }]
+ * @typeParam T The type of values being sorted.
+ * @param props A key definition or an ordered list of key definitions.
+ * @returns A comparator for values of type `T`.
  */
 export const compareBy = <T>(props: OptionalArray<CompareKey<T>>): CompareFn<T> => {
 	return (a: T, b: T) => {

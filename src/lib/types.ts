@@ -1,6 +1,6 @@
 /**
- * Type of the compare function.
- * @type {T} The type of the objects to compare.
+ * A comparator for values of type `T`.
+ * @typeParam T The type of values to compare.
  */
 export type CompareFn<T> = (a: T, b: T) => number;
 
@@ -10,10 +10,10 @@ export type CompareFn<T> = (a: T, b: T) => number;
 export type CompareDirection = 'asc' | 'desc';
 
 /**
- * The type of the compare property.
- * @type {T} The type of the object to compare.
- * @param {keyof T | ((el: T) => unknown)} key The object's key to compare or a value getter to the value.
- * @param {CompareDirection} dir The compare direction.
+ * A property or callback used to select a value for comparison.
+ * @typeParam T The type of the object to compare.
+ * @property key The object's key or a callback that returns a value to compare.
+ * @property dir The comparison direction. Defaults to `asc`.
  */
 export type CompareKey<T> = {
 	key: keyof T | ((el: T) => unknown);

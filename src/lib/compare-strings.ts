@@ -2,7 +2,7 @@ import { CompareDirection } from './types';
 
 /**
  * Compare string values.
- * @description uses `String.localCompare()`.
+ * Uses `String.prototype.localeCompare()`.
  * @param {string} a The first value.
  * @param {string} b The second value.
  * @param {CompareDirection} dir The direction to compare.
