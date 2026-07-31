@@ -4,7 +4,7 @@
 <!-- project badges -->
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![npm](https://img.shields.io/npm/v/compare-by?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/compare-by)
-[![Buy Me a Coffee](https://img.shields.io/badge/buy_me_a_coffee-tobiaswaelde-ffdd00?logo=buymeacoffee&logoColor=000000&style=for-the-badge)](https://www.buymeacoffee.com/tobiaswaelde)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=000000&style=for-the-badge)](https://www.buymeacoffee.com/tobiaswaelde)
 [![Tests](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/test.yml?branch=main&style=for-the-badge&label=tests&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/test.yml)
 [![Build](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/build.yml?branch=main&style=for-the-badge&label=build&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/release.yml?branch=main&style=for-the-badge&label=release&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/release.yml)
