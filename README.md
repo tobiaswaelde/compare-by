@@ -2,15 +2,12 @@
 # compare-by
 
 <!-- project badges -->
-![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
-[![Npm package yearly downloads](https://badgen.net/npm/v/compare-by)](https://npmjs.com/package/compare-by)
-[![Quality Gate Status](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=alert_status&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Coverage](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=coverage&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Duplicated Lines (%)](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=duplicated_lines_density&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Lines of Code](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=ncloc&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Maintainability Rating](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=sqale_rating&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Reliability Rating](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=reliability_rating&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
-[![Security Rating](https://sq.srv.tobiaswaelde.com/api/project_badges/measure?project=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R&metric=security_rating&token=sqb_c5b3d3e8f6312b5bd707adab17d5dfe34549d48b)](https://sq.srv.tobiaswaelde.com/dashboard?id=tobiaswaelde_compare-by_AYtaChIePhYnLbS8eM9R)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![npm](https://img.shields.io/npm/v/compare-by?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/compare-by)
+[![Buy Me a Coffee](https://img.shields.io/badge/buy_me_a_coffee-tobiaswaelde-ffdd00?logo=buymeacoffee&logoColor=000000&style=for-the-badge)](https://www.buymeacoffee.com/tobiaswaelde)
+[![Tests](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/test.yml?branch=main&style=for-the-badge&label=tests&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/test.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/build.yml?branch=main&style=for-the-badge&label=build&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/compare-by/release.yml?branch=main&style=for-the-badge&label=release&logo=githubactions&logoColor=white)](https://github.com/tobiaswaelde/compare-by/actions/workflows/release.yml)
 
 
 `compare-by` is a versatile utility library that simplifies sorting arrays of objects by one or multiple object keys. It allows you to specify the sort direction for each key, providing fine-grained control over the sorting process.
@@ -23,18 +20,17 @@
   - [Sort by a Single Object Key](#sort-by-a-single-object-key)
   - [Sort by a Nested Object Key](#sort-by-a-nested-object-key)
   - [Sort by Multiple Keys](#sort-by-multiple-keys)
-- [Project Badges](#project-badges)
 - [License](#license)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
 ## Installation
-You can install `compare-by` via [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/):
+You can install `compare-by` via [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/):
 
 <!-- omit in toc -->
-### Using yarn
+### Using pnpm
 ```sh
-yarn add compare-by
+pnpm add compare-by
 ```
 
 <!-- omit in toc -->
@@ -137,16 +133,6 @@ console.log(arr);
  * ]
  */
 ```
-
-## Project Badges
-- **Npm Package Version:** The current version of the npm package.
-- **Quality Gate Status:** Measures the quality of the code using [SonarQube](https://www.sonarqube.org/).
-- **Coverage:** Shows the code coverage of your project.
-- **Duplicated Lines (%):** Indicates the percentage of duplicated lines in your code.
-- **Lines of Code:** Displays the total lines of code in your project.
-- **Maintainability Rating:** Rates the maintainability of your code.
-- **Reliability Rating:** Rates the reliability of your code.
-- **Security Rating:** Rates the security of your code.
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).
