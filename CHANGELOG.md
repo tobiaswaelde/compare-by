@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2
+
+### Patch Changes
+
+- 9ae65fd: Update development dependency security overrides and replace the legacy coverage YAML loader to remove vulnerable transitive dependencies.
+
 ## 2.1.1
 
 ### Patch Changes
