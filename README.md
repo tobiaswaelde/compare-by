@@ -20,24 +20,26 @@ npm install compare-by
 ## Usage
 
 ```ts
-import { compareBy } from 'compare-by';
+import { compareBy } from "compare-by";
 
 const people = [
-	{ name: { first: 'Ada', last: 'Lovelace' }, age: 36, active: true },
-	{ name: { first: 'Grace', last: 'Hopper' }, age: 85, active: false },
+  { name: { first: "Ada", last: "Lovelace" }, age: 36, active: true },
+  { name: { first: "Grace", last: "Hopper" }, age: 85, active: false },
 ];
 
 // One property; `asc` is the default direction.
-people.sort(compareBy({ key: 'age' }));
+people.sort(compareBy({ key: "age" }));
 
 // A callback can select a nested property.
-people.sort(compareBy({ key: (person) => person.name.last, dir: 'desc' }));
+people.sort(compareBy({ key: (person) => person.name.last, dir: "desc" }));
 
 // Compare properties in order until one differs.
-people.sort(compareBy([
-	{ key: 'active', dir: 'desc' },
-	{ key: (person) => person.name.last },
-]));
+people.sort(
+  compareBy([
+    { key: "active", dir: "desc" },
+    { key: (person) => person.name.last },
+  ]),
+);
 ```
 
 ## API
@@ -47,13 +49,15 @@ people.sort(compareBy([
 Returns an `Array.prototype.sort` comparator. `props` accepts one `CompareKey` or an array of them. Keys are evaluated in order, so later keys break ties from earlier keys.
 
 ```ts
-type CompareDirection = 'asc' | 'desc';
+type CompareDirection = "asc" | "desc";
 type CompareKey<T> = {
-	key: keyof T | ((value: T) => unknown);
-	dir?: CompareDirection;
+  key: keyof T | ((value: T) => unknown);
+  dir?: CompareDirection;
 };
 
-function compareBy<T>(props: CompareKey<T> | CompareKey<T>[]): (a: T, b: T) => number;
+function compareBy<T>(
+  props: CompareKey<T> | CompareKey<T>[],
+): (a: T, b: T) => number;
 ```
 
 The selected values must be strings, numbers, booleans, or `Date` instances. Other values cause `compareBy` to throw an `Unsupported data type for comparison` error when sorting.
@@ -91,3 +95,7 @@ Please use the [bug report](https://github.com/tobiaswaelde/compare-by/issues/ne
 ## Author
 
 [Tobias Wälde](https://tobiaswaelde.com)
+
+## Development toolchain
+
+Use Node.js 26.13.0 LTS and the package manager pinned in `package.json`. Published library runtime compatibility remains unchanged. Builds use TypeScript 7; ESLint and compiler-API consumers use the TypeScript 6 compatibility package. Dependency overrides, where present, pin security fixes for transitive packages; validate tests and documentation builds when changing them.
