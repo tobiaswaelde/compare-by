@@ -35,7 +35,7 @@
     "build": "tsc --project tsconfig.build.json",
     "prepack": "pnpm build",
     "pretest": "jest --clearCache",
-    "test": "jest",
+    "test": "node --test scripts/check-deepmerge.mjs && jest",
     "lint": "eslint .",
     "release": "changeset publish",
     "version-packages": "changeset version"
